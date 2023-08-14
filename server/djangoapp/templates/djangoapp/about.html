@@ -1,42 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
-    <title>About us</title>
-    {% load static %}
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <link href="https://unpkg.com/bootstrap-table@1.18.2/dist/bootstrap-table.min.css" rel="stylesheet">
+    <script src="https://unpkg.com/bootstrap-table@1.18.2/dist/bootstrap-table.min.js"></script>
+    <script src="https://unpkg.com/bootstrap-table@1.18.2/dist/extensions/filter-control/bootstrap-table-filter-control.min.js"></script>
 </head>
-
 <body>
+    <!--Add a nav bar here -->
     <nav class="navbar navbar-light bg-light">
         <div class="container-fluid">
             <div class="navbar-header">
-                <a class="navbar-brand" href="{% url 'djangoapp:index' %}">Dealership Review</a>
+                <a class="navbar-brand" href="{% url 'djangoapp:index' %}">Best Car</a>
+                <a class="navbar-brand" href="#">About Us</a>
             </div>
             <ul class="nav navbar-nav navbar-right">
                 {% if user.is_authenticated %}
                 <li>
-                    <a class="btn btn-link" href="#">{{ user.first_name }}({{ user.username }})</a>
-                    <a class="btn btn-link" href="{% url 'djangoapp:logout' %}">Logout</a>
+                     <a class="btn btn-link" href="#">{{ user.first_name }}({{ user.username }})</a>
+                     <a class="btn btn-link" href="{% url 'djangoapp:logout' %}">Logout</a>
                 </li>
                 {% else %}
                 <li>
-                    <form class="form-inline" action="{% url 'djangoapp:login' %}" method="post">
+                     <form class="form-inline" action="{% url 'djangoapp:login' %}" method="post">
                         {% csrf_token %}
                         <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Username" name="username">
-                            <input type="password" class="form-control" placeholder="Password" name="psw">
-                            <button class="btn btn-primary" type="submit">Login</button>
-                            <a class="btn btn-link" href="{% url 'djangoapp:registration' %}">Sign Up</a>
+                             <input type="text" class="form-control" placeholder="Username" name="username" >
+                             <input type="password" class="form-control" placeholder="Password" name="psw" >
+                             <button class="btn btn-primary" type="submit" style="margin-left:5px">Login</button>
+                             <a class="btn btn-link" href="{% url 'djangoapp:registration' %}">Sign Up</a>
                         </div>
-                    </form>
+                     </form>
                 </li>
                 {% endif %}
             </ul>
         </div>
     </nav>
-    "aquí van el blah blah de la empresa"
-</body>
+    
+    <!-- Content -->
+    <br>
+    <div class="container">
+        <div class="page-header">
+          <h1>Best Cars</h1>      
+        </div>
+        <hr>
+        <p>Welcome to Best Cars dealership, home to the best cars in North America.</p>      
+        <p>We sell domestic and imported cars at reasonable prices.</p>      
+    </div>
 
+    <!-- Footer Navbar -->
+    <footer class="navbar navbar-light bg-light" style="margin-top:15px; bottom:0; width:100%">
+        <div class="container-fluid">
+            <div class="navbar-header">
+              <a class="navbar-brand" href="{% url 'djangoapp:contact' %}">Contact Us</a>
+            </div>
+            <div class="text-center p-3">
+                © 2022 <a class="text-dark" href="{% url 'djangoapp:index' %}">Dealership Review</a>
+            </div>
+        </div>
+    </footer>
+</body>
 </html>
